@@ -15,6 +15,7 @@ import { UsuarioCadastroComponent } from './usuario-cadastro/usuario-cadastro.co
 import { UsuariosGridComponent } from './usuarios-grid/usuarios-grid.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { FooterComponent } from './footer/footer.component';
     UsuariosGridComponent,
     HomeComponent,
     FooterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

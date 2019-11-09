@@ -7,6 +7,7 @@ import {LivroCadastroComponent} from './livro-cadastro/livro-cadastro.component'
 import {UsuariosGridComponent} from './usuarios-grid/usuarios-grid.component';
 import {UsuarioCadastroComponent} from './usuario-cadastro/usuario-cadastro.component';
 import {HomeComponent} from './home/home.component';
+import {LoginComponent} from './login/login.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'livro/novo', component: LivroCadastroComponent},
   {path: 'usuarios', component: UsuariosGridComponent},
   {path: 'usuario/novo', component: UsuarioCadastroComponent},
+  {path: 'login', component: LoginComponent},
 ];
 
 @NgModule({
