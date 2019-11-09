@@ -1,13 +1,13 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {CategoriaCadastroComponent} from './categoria-cadastro/categoria-cadastro.component';
-import {CategoriasGridComponent} from './categorias-grid/categorias-grid.component';
-import {LivrosGridComponent} from './livros-grid/livros-grid.component';
-import {LivroCadastroComponent} from './livro-cadastro/livro-cadastro.component';
-import {UsuariosGridComponent} from './usuarios-grid/usuarios-grid.component';
-import {UsuarioCadastroComponent} from './usuario-cadastro/usuario-cadastro.component';
-import {HomeComponent} from './home/home.component';
-import {LoginComponent} from './login/login.component';
+import {CategoriaCadastroComponent} from './categorias/categoria-cadastro/categoria-cadastro.component';
+import {CategoriasGridComponent} from './categorias/categorias-grid/categorias-grid.component';
+import {LivrosGridComponent} from './livros/livros-grid/livros-grid.component';
+import {LivroCadastroComponent} from './livros/livro-cadastro/livro-cadastro.component';
+import {UsuariosGridComponent} from './usuarios/usuarios-grid/usuarios-grid.component';
+import {UsuarioCadastroComponent} from './usuarios/usuario-cadastro/usuario-cadastro.component';
+import {HomeComponent} from './core/home/home.component';
+import {LoginComponent} from './core/login/login.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},

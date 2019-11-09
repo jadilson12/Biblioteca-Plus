@@ -5,31 +5,16 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { LivroCadastroComponent } from './livro-cadastro/livro-cadastro.component';
-import { LivrosGridComponent } from './livros-grid/livros-grid.component';
-import { CategoriaCadastroComponent } from './categoria-cadastro/categoria-cadastro.component';
-import { CategoriasGridComponent } from './categorias-grid/categorias-grid.component';
-import { UsuarioCadastroComponent } from './usuario-cadastro/usuario-cadastro.component';
-import { UsuariosGridComponent } from './usuarios-grid/usuarios-grid.component';
-import { HomeComponent } from './home/home.component';
-import { FooterComponent } from './footer/footer.component';
-import { LoginComponent } from './login/login.component';
+import {CoreModule} from './core/core.module';
+
+import {CategoriasModule} from './categorias/categorias.module';
+import {LivrosModule} from './livros/livros.module';
+import {UsuariosModule} from './usuarios/usuarios.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    LivroCadastroComponent,
-    LivrosGridComponent,
-    CategoriaCadastroComponent,
-    CategoriasGridComponent,
-    UsuarioCadastroComponent,
-    UsuariosGridComponent,
-    HomeComponent,
-    FooterComponent,
-    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +22,10 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     NgbModule,
     FontAwesomeModule,
+    CoreModule,
+    CategoriasModule,
+    LivrosModule,
+    UsuariosModule
   ],
   providers: [],
   bootstrap: [AppComponent]
