@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-between">
+        <div>
+          <h1>Listagem de categorias</h1>
+        </div>
+        <div>
+          <a  routerLink="/categoria/novo" class="btn btn-success text-white" role="button" >Adicionar nova</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <table class="table table-hover" style="width:100%">
+        <thead>
+        <tr>
+          <th class="text-center">Nome</th>
+          <th class="text-center">Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let categoria of categorias">
+          <td>{{categoria.nome}}</td>
+          <td class="text-center">
+            <button type="button" class="btn btn-sm btn-danger mr-2">
+              <fa-icon [icon]="faTrash"></fa-icon></button>
+            <button type="button" class="btn btn-sm btn-success">
+              <fa-icon [icon]="faEdit"></fa-icon></button>
+          </td>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer text-muted">
+      <div class="d-flex justify-content-end">
+        <div>
+          <button type="button" onClick="javascript:history.go(-1);" class="btn btn-secondary">Voltar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

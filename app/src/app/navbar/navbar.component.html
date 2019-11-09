@@ -2,15 +2,18 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <a href="javascript:;" class="navbar-toggle" (click)="isMenu =!isMenu" ><fa-icon [icon]="faBars"></fa-icon>
-       </a>
+        <a href="javascript:;" class="navbar-toggle" (click)="isMenu =!isMenu">
+          <fa-icon [icon]="faBars"></fa-icon>
+        </a>
       </div>
     </div>
   </div>
   <ul class="navbar-menu" [hidden]="!isMenu">
     <li class="navbar-usuario">Pedro Dias</li>
-    <li class="navbar-meunuitem"><a href="#">Livros</a> </li>
-    <li class="navbar-meunuitem"><a href="#">Categorias</a> </li>
-    <li class="navbar-meunuitem" ><a href="#">Logout</a> </li>
+    <li class="navbar-meunuitem"><a routerLink="/">Home</a></li>
+    <li class="navbar-meunuitem"><a routerLink="/livros">Livros</a></li>
+    <li class="navbar-meunuitem"><a routerLink="/categorias">Categorias</a></li>
+    <li class="navbar-meunuitem"><a routerLink="/usuarios">Usuários</a></li>
+    <li class="navbar-meunuitem"><a routerLink="/logout">Logout</a></li>
   </ul>
 </nav>
