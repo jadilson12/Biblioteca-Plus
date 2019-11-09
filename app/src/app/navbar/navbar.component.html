@@ -1,0 +1,16 @@
+<nav class="navbar">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <a href="javascript:;" class="navbar-toggle" (click)="isMenu =!isMenu" ><fa-icon [icon]="faBars"></fa-icon>
+       </a>
+      </div>
+    </div>
+  </div>
+  <ul class="navbar-menu" [hidden]="!isMenu">
+    <li class="navbar-usuario">Pedro Dias</li>
+    <li class="navbar-meunuitem"><a href="#">Livros</a> </li>
+    <li class="navbar-meunuitem"><a href="#">Categorias</a> </li>
+    <li class="navbar-meunuitem" ><a href="#">Logout</a> </li>
+  </ul>
+</nav>
