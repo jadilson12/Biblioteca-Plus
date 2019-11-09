@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-categoria-cadastro',
@@ -7,6 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriaCadastroComponent implements OnInit {
 
+  setSalvar(form: NgForm) {
+    console.log(form.value);
+    console.log(form.valid);
+  }
   constructor() { }
 
   ngOnInit() {

@@ -4,21 +4,26 @@
       <h1>Cadastrar Categoria</h1>
     </div>
   </div>
-  <form>
+  <form #categoriaForm="ngForm" (ngSubmit)="setSalvar(categoriaForm)">
     <div class="row">
       <div class="col-12">
         <div class="form-group">
           <label for="nome">Nome da categoria</label>
-          <input type="text" class="form-control" id="nome"  placeholder="Digite o nome da categoria">
+          <input type="text" class="form-control"
+                 id="nome" name="nome"
+                 ngModel
+                 placeholder="Digite o nome da categoria"
+                 required #nome="ngModel">
         </div>
       </div>
+
     </div>
     <div class="d-flex justify-content-end">
       <div>
-        <button type="button" onClick="javascript:history.go(-1);"   class="btn btn-secondary mr-3">Voltar</button>
+        <button type="button" onClick="javascript:history.go(-1);" class="btn btn-secondary mr-3">Voltar</button>
       </div>
-      <div >
-        <button type="submit" class="btn btn-primary">Salvar</button>
+      <div>
+        <button type="submit" class="btn btn-primary" [disabled]="!categoriaForm.valid">Salvar</button>
       </div>
     </div>
   </form>
