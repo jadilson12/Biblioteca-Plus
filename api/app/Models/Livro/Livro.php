@@ -3,10 +3,20 @@
 namespace App\Models\Livro;
 
 use App\_helpers\Util;
+use App\Models\Categoria\Categoria;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Livro extends Model
 {
+
+    public function categoria()
+    {
+        return $this->hasOne(Categoria::class, 'id');
+    }
+
+
+
     protected $fillable = ['nm_livro', 'nm_autor', 'nm_editora',
                            'num_paginas', 'dt_lancamento', 'categoria_id'];
 
@@ -34,6 +44,15 @@ class Livro extends Model
         $livro->categoria_id = $data->categoria_id;
         $livro->save();
         return $livro;
+    }
+
+
+    public static function getLivrosWithRelationships()
+    {
+        return DB::table('livros as li')
+            ->join('categorias as cat', 'li.categoria_id', '=', 'cat.id')
+            ->select('li.*', 'cat.nm_categoria')
+            ->get();
     }
 
 }

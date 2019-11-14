@@ -11,7 +11,8 @@ class LivroController extends Controller
     public function get()
     {
         try {
-            return response(Livro::all(), 200);
+            $livros = Livro::getLivrosWithRelationships();
+            return response($livros, 200);
 
         } catch (\Exception $exception) {
             return response('Not Found', 404);
@@ -68,6 +69,4 @@ class LivroController extends Controller
             return response('Not Found', 404);
         }
     }
-
-
 }
