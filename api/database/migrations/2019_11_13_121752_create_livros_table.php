@@ -19,6 +19,13 @@ class CreateLivrosTable extends Migration
             $table->string('nm_autor');
             $table->string('nm_editora');
             $table->integer('num_paginas');
+            $table->date('dt_lancamento');
+
+            $table->unsignedBigInteger('categoria_id');
+            $table->foreign('categoria_id')
+                ->references('id')->on('categorias')
+                ->onDelete('cascade');
+
             $table->timestamps();
         });
     }
