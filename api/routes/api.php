@@ -17,3 +17,11 @@ Route::group(['namespace' => 'Livro'], function (){
     Route::put('/livro/{id}', 'LivroController@put');
     Route::delete('/livro/{id}', 'LivroController@delete');
 });
+
+Route::group(['namespace' => 'User'], function (){
+    Route::get('/users', 'UserController@get');
+    Route::post('/user', 'UserController@post');
+    Route::get('/user/{id}', 'UserController@show');
+    Route::put('/user/{id}', 'UserController@put');
+    Route::delete('/user/{id}', 'UserController@delete');
+});
