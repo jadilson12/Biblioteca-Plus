@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
+import {Component, OnInit} from '@angular/core';
+import {faTrash, faEdit} from '@fortawesome/free-solid-svg-icons';
+import {LivroService} from "../livro.service";
+
 @Component({
   selector: 'app-livros-grid',
   templateUrl: './livros-grid.component.html',
@@ -8,26 +10,26 @@ import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 export class LivrosGridComponent implements OnInit {
   faTrash = faTrash;
   faEdit = faEdit;
-  livros = [
-    {
-      nome: 'O Rei leaõ',
-      autor: 'José carlos',
-      editora: 'Editora plus',
-      paginas: '200',
-      lancamento: '12/12/2019'
-    },
-    {
-      nome: 'O Rei leaõ',
-      autor: 'José carlos',
-      editora: 'Editora plus',
-      paginas: '200',
-      lancamento: '12/12/2019'
-    },
-  ];
+  livros = [];
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private livroServices: LivroService,) {
   }
 
+  ngOnInit() {
+    this.getLivro()
+  }
+
+  getLivro() {
+    this.livroServices.getLivro()
+      .subscribe(data => this.livros = data)
+  }
+
+  deleteLivro(id) {
+    this.livroServices.deleteLivro(id)
+      .subscribe(() => {
+          this.getLivro()
+        },
+        res => console.log(res)
+      )
+  }
 }

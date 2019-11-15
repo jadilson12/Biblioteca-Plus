@@ -15,9 +15,10 @@ const routes: Routes = [
   {path: 'categorias/novo', component: CategoriaCadastroComponent},
   {path: 'categorias/:id', component: CategoriaCadastroComponent},
   {path: 'livros', component: LivrosGridComponent},
-  {path: 'livro/novo', component: LivroCadastroComponent},
+  {path: 'livros/novo', component: LivroCadastroComponent},
+  {path: 'livros/:id', component: LivroCadastroComponent},
   {path: 'usuarios', component: UsuariosGridComponent},
-  {path: 'usuario/novo', component: UsuarioCadastroComponent},
+  {path: 'usuarios/novo', component: UsuarioCadastroComponent},
   {path: 'login', component: LoginComponent},
 ];
 
