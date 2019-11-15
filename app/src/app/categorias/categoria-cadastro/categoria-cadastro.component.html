@@ -1,19 +1,19 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h1>Cadastrar Categoria</h1>
+      <h1>{{ editando ? 'Atualizar' : 'Cadastrar' }} Categoria</h1>
     </div>
   </div>
-  <form #categoriaForm="ngForm" (ngSubmit)="setSalvar(categoriaForm)">
+  <form #categoriaForm="ngForm" (ngSubmit)="salvar(categoriaForm)">
     <div class="row">
       <div class="col-12">
         <div class="form-group">
           <label for="nome">Nome da categoria</label>
           <input type="text" class="form-control"
-                 id="nome" name="nome"
-                 ngModel
+                 id="nome" name="nm_categoria"
+                 [(ngModel)]="categoria.nm_categoria"
                  placeholder="Digite o nome da categoria"
-                 required #nome="ngModel">
+                 required #nmCategoria="ngModel">
         </div>
       </div>
 

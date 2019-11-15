@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
+import {Component, OnInit} from '@angular/core';
+import {faTrash, faEdit} from '@fortawesome/free-solid-svg-icons';
+import {CategoriasService} from "../categorias.service";
 
 @Component({
   selector: 'app-categorias-grid',
@@ -9,13 +10,25 @@ import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 export class CategoriasGridComponent implements OnInit {
   faTrash = faTrash;
   faEdit = faEdit;
-  categorias = [
-    {nome: 'Informatica'},
-    {nome: 'Medicinas'},
-  ];
-  constructor() { }
+  categorias = [];
+
+  constructor(private categoriaServices: CategoriasService,) {}
 
   ngOnInit() {
+    this.getCategoria()
   }
 
+  getCategoria() {
+    this.categoriaServices.getCategoria()
+      .subscribe(data => this.categorias = data)
+  }
+
+  deleteCategoria(id) {
+    this.categoriaServices.deleteCategoria(id)
+      .subscribe(() => {
+          this.getCategoria()
+        },
+        res => console.log(res)
+      )
+  }
 }
