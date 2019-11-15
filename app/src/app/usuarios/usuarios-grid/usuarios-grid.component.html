@@ -6,7 +6,7 @@
           <h1>Usuários</h1>
         </div>
         <div>
-          <a  routerLink="/usuario/novo" class="btn btn-success text-white" role="button" >Adicionar nova</a>
+          <a  routerLink="/usuarios/novo" class="btn btn-success text-white" role="button" >Adicionar nova</a>
         </div>
       </div>
     </div>
@@ -23,12 +23,12 @@
         </thead>
         <tbody>
         <tr *ngFor="let usuario of usuarios">
-          <td>{{usuario.nome}}</td>
+          <td>{{usuario.name}}</td>
           <td>{{usuario.email}}</td>
           <td>
-            <button type="button" class="btn btn-sm btn-danger mr-2">
+            <button type="button" class="btn btn-sm btn-danger mr-2" (click)="deleteUsuario(usuario.id)">
               <fa-icon [icon]="faTrash"></fa-icon></button>
-            <button type="button" class="btn btn-sm btn-success">
+            <button type="button" class="btn btn-sm btn-success" [routerLink]="['/usuarios', usuario.id]">
               <fa-icon [icon]="faEdit"></fa-icon></button>
           </td>
         </tr>

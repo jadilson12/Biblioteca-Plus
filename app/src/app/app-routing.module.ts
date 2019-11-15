@@ -19,6 +19,7 @@ const routes: Routes = [
   {path: 'livros/:id', component: LivroCadastroComponent},
   {path: 'usuarios', component: UsuariosGridComponent},
   {path: 'usuarios/novo', component: UsuarioCadastroComponent},
+  {path: 'usuarios/:id', component: UsuarioCadastroComponent},
   {path: 'login', component: LoginComponent},
 ];
 
