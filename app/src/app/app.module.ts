@@ -11,6 +11,8 @@ import {CoreModule} from './core/core.module';
 import {CategoriasModule} from './categorias/categorias.module';
 import {LivrosModule} from './livros/livros.module';
 import {UsuariosModule} from './usuarios/usuarios.module';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {InterceptorService} from "./interceptors/interceptor.service";
 
 @NgModule({
   declarations: [
@@ -25,9 +27,16 @@ import {UsuariosModule} from './usuarios/usuarios.module';
     CoreModule,
     CategoriasModule,
     LivrosModule,
-    UsuariosModule
+    UsuariosModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
