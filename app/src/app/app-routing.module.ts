@@ -11,8 +11,9 @@ import {LoginComponent} from './core/login/login.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'categorias', component: CategoriasGridComponent},
-  {path: 'categoria/novo', component: CategoriaCadastroComponent},
+  {path: 'categorias', component: CategoriasGridComponent,},
+  {path: 'categorias/novo', component: CategoriaCadastroComponent},
+  {path: 'categorias/:id', component: CategoriaCadastroComponent},
   {path: 'livros', component: LivrosGridComponent},
   {path: 'livro/novo', component: LivroCadastroComponent},
   {path: 'usuarios', component: UsuariosGridComponent},
