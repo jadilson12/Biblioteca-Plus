@@ -2,18 +2,28 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <a href="javascript:;" class="navbar-toggle" (click)="isMenu =!isMenu">
-          <fa-icon [icon]="faBars"></fa-icon>
-        </a>
+        <div class="d-flex">
+          <span>
+            <a href="javascript:;" class="navbar-toggle" (click)="isMenu =!isMenu">
+              <fa-icon [icon]="faBars"></fa-icon>
+            </a>
+          </span>
+        </div>
       </div>
     </div>
   </div>
   <ul class="navbar-menu" [hidden]="!isMenu">
-    <li class="navbar-usuario">Pedro Dias</li>
-    <li class="navbar-menuitem" ><a routerLink="/">Home</a></li>
-    <li class="navbar-menuitem" routerLinkActive="ativo" ><a routerLink="/livros">Livros</a></li>
-    <li class="navbar-menuitem" routerLinkActive="ativo" ><a routerLink="/categorias">Categorias</a></li>
-    <li class="navbar-menuitem" routerLinkActive="ativo" ><a routerLink="/usuarios">Usuários</a></li>
-    <li class="navbar-menuitem" routerLinkActive="ativo" ><a routerLink="/logout">Logout</a></li>
+    <li class="d-flex navbar-usuario justify-content-between">
+      <strong>Pedro Dias</strong>
+      <a href="javascript:;" class="navbar-toggle" (click)="isMenu =!isMenu">
+        <fa-icon [icon]="faArrowLeft"></fa-icon>
+      </a>
+    </li>
+
+    <li class="navbar-menuitem"><a routerLink="/">Home</a></li>
+    <li class="navbar-menuitem" routerLinkActive="ativo"><a routerLink="/livros">Livros</a></li>
+    <li class="navbar-menuitem" routerLinkActive="ativo"><a routerLink="/categorias">Categorias</a></li>
+    <li class="navbar-menuitem" routerLinkActive="ativo"><a routerLink="/usuarios">Usuários</a></li>
+    <li class="navbar-menuitem" routerLinkActive="ativo"><a routerLink="/logout">Logout</a></li>
   </ul>
 </nav>
