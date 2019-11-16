@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {ActivatedRoute, Router} from "@angular/router";
-import {LivroService} from "../livro.service";
-import {CategoriasService} from "../../categorias/categorias.service";
-import {ToastrService} from "ngx-toastr";
+import {ActivatedRoute, Router} from '@angular/router';
+import {LivroService} from '../livro.service';
+import {CategoriasService} from '../../categorias/categorias.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-livro-cadastro',
@@ -32,53 +32,53 @@ export class LivroCadastroComponent implements OnInit {
   }
 
   ngOnInit() {
-    const idLivro = this.route.snapshot.params['id'];
-    idLivro && this.carregarLivro(idLivro)
+    const idLivro = this.route.snapshot.params.id;
+    idLivro && this.carregarLivro(idLivro);
 
     this.categoriaService.getCategoria()
-      .subscribe(data => this.categorias = data)
+      .subscribe(data => this.categorias = data);
   }
 
   get editando() {
-    return Boolean(this.livro.id)
+    return Boolean(this.livro.id);
   }
 
   private adicionar(livro: NgForm) {
     this.livroServices.setLivro(livro.value)
       .subscribe(resp => {
-          // this.router.navigate(['/livros', resp.id])
+          this.router.navigate(['/livros', resp.id]);
           this.toastr.success('Criada com sucesso!', 'Livro');
         },
         resp => {
           this.toastr.error(resp.error.text, 'Livro');
-        })
+        });
   }
 
   private carregarLivro(idLivro: number) {
     this.livroServices.showLivro(idLivro)
       .subscribe(livro => {
         this.livro = Object.assign(this.livro, livro);
-        console.log(this.livro)
-      })
+        console.log(this.livro);
+      });
   }
 
   private salvar(livroForm: NgForm) {
     if (this.editando) {
-      this.atualizar()
+      this.atualizar();
     } else {
-      this.adicionar(livroForm)
+      this.adicionar(livroForm);
     }
   }
 
   private atualizar() {
     this.livroServices.updateLivro(this.livro)
       .subscribe(resp => {
-          this.livro = Object.assign(this.livro, resp)
+          this.livro = Object.assign(this.livro, resp);
           this.toastr.success('Atualizado com sucesso!', 'Livro');
         },
         resp => {
           this.toastr.error(resp.error.text, 'Livro');
-        })
+        });
 
   }
 }

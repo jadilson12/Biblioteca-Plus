@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
-import {UsuarioService} from "../usuario.service";
-import {ToastrService} from "ngx-toastr";
+import {UsuarioService} from '../usuario.service';
+import {ToastrService} from 'ngx-toastr';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-usuarios-grid',
@@ -11,19 +12,19 @@ import {ToastrService} from "ngx-toastr";
 export class UsuariosGridComponent implements OnInit {
   faTrash = faTrash;
   faEdit = faEdit;
-  usuarios: {};
+  usuarios: Observable<any[]>;
   constructor(
     private usuarioServices: UsuarioService,
     private toastr: ToastrService
   ) { }
 
   ngOnInit() {
-    this.getUsuario()
+    this.getUsuario();
   }
 
   getUsuario() {
     this.usuarioServices.getUsuario()
-      .subscribe(data => this.usuarios = data)
+      .subscribe(data => this.usuarios = data);
   }
 
   deleteUsuario(id) {
@@ -34,6 +35,6 @@ export class UsuariosGridComponent implements OnInit {
         },
         resp => {
           this.toastr.error(resp.error.text, 'Usuário');
-        })
+        });
   }
 }

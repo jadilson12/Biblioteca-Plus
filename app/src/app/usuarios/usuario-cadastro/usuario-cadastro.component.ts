@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {ActivatedRoute, Router} from "@angular/router";
-import {UsuarioService} from "../usuario.service";
-import {ToastrService} from "ngx-toastr";
+import {ActivatedRoute, Router} from '@angular/router';
+import {UsuarioService} from '../usuario.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-usuario-cadastro',
@@ -26,50 +26,50 @@ export class UsuarioCadastroComponent implements OnInit {
   }
 
   ngOnInit() {
-    const idUsuario = this.route.snapshot.params['id'];
-    idUsuario && this.carregarUsuario(idUsuario)
+    const idUsuario = this.route.snapshot.params.id;
+    idUsuario && this.carregarUsuario(idUsuario);
   }
 
   get editando() {
-    return Boolean(this.usuario.id)
+    return Boolean(this.usuario.id);
   }
 
   private adicionar(usuario: NgForm) {
-    console.log(usuario.value)
+    console.log(usuario.value);
     this.usuarioServices.setUsuario(usuario.value)
       .subscribe(resp => {
-          // this.router.navigate(['/usuarios', resp.id]);
+          this.router.navigate(['/usuarios', resp.id]);
           this.toastr.success('Criada com sucesso!', 'Usuário');
         },
         resp => {
           this.toastr.error(resp.error.text, 'Usuário');
-        })
+        });
   }
 
   private carregarUsuario(idUsuario: number) {
     this.usuarioServices.showUsuario(idUsuario)
       .subscribe(usuario => {
         this.usuario = Object.assign(this.usuario, usuario);
-        console.log(this.usuario)
-      })
+        console.log(this.usuario);
+      });
   }
 
   private salvar(usuarioForm: NgForm) {
     if (this.editando) {
-      this.atualizar()
+      this.atualizar();
     } else {
-      this.adicionar(usuarioForm)
+      this.adicionar(usuarioForm);
     }
   }
 
   private atualizar() {
     this.usuarioServices.updateUsuario(this.usuario)
       .subscribe(resp => {
-          this.usuario = Object.assign(this.usuario, resp)
-          this.toastr.success('Atualizado com sucesso!', 'Usuário');
+        this.usuario = Object.assign(this.usuario, resp);
+        this.toastr.success('Atualizado com sucesso!', 'Usuário');
         },
         resp => {
           this.toastr.error(resp.error.text, 'Usuário');
-        })
+        });
   }
 }
