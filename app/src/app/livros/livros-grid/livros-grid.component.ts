@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {faTrash, faEdit} from '@fortawesome/free-solid-svg-icons';
 import {LivroService} from "../livro.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-livros-grid',
@@ -10,9 +11,12 @@ import {LivroService} from "../livro.service";
 export class LivrosGridComponent implements OnInit {
   faTrash = faTrash;
   faEdit = faEdit;
-  livros = [];
+  livros: {};
 
-  constructor(private livroServices: LivroService,) {
+  constructor(
+    private livroServices: LivroService,
+    private toastr: ToastrService
+  ) {
   }
 
   ngOnInit() {
@@ -28,8 +32,10 @@ export class LivrosGridComponent implements OnInit {
     this.livroServices.deleteLivro(id)
       .subscribe(() => {
           this.getLivro()
+          this.toastr.success('Excluido com sucesso!', 'Livro');
         },
-        res => console.log(res)
-      )
+        resp => {
+          this.toastr.error(resp.error.text, 'Livro');
+        })
   }
 }

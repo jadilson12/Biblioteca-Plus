@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable} from "rxjs/Observable";
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +12,11 @@ export class CategoriasService {
 
   baseUrl: string = 'http://localhost:8000/api/v1/categorias';
 
-  getCategoria(): Observable<any> {
+  getCategoria() {
     return this.http.get(this.baseUrl)
   }
 
-  setCategoria(categoria: any): Observable<any> {
+  setCategoria(categoria) {
     return this.http.post(this.baseUrl, categoria)
   }
 

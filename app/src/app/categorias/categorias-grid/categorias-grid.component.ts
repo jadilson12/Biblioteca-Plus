@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {faTrash, faEdit} from '@fortawesome/free-solid-svg-icons';
 import {CategoriasService} from "../categorias.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-categorias-grid',
@@ -10,9 +11,12 @@ import {CategoriasService} from "../categorias.service";
 export class CategoriasGridComponent implements OnInit {
   faTrash = faTrash;
   faEdit = faEdit;
-  categorias = [];
+  categorias: {};
 
-  constructor(private categoriaServices: CategoriasService,) {}
+  constructor(
+    private categoriaServices: CategoriasService,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit() {
     this.getCategoria()
@@ -26,9 +30,11 @@ export class CategoriasGridComponent implements OnInit {
   deleteCategoria(id) {
     this.categoriaServices.deleteCategoria(id)
       .subscribe(() => {
-          this.getCategoria()
+          this.getCategoria();
+          this.toastr.success('Excluido com sucesso!', 'Categoria');
         },
-        res => console.log(res)
-      )
+        resp => {
+          this.toastr.error(resp.error.text, 'Categoria');
+        })
   }
 }

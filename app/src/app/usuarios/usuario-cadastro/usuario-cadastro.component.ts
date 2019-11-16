@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {ActivatedRoute, Router} from "@angular/router";
 import {UsuarioService} from "../usuario.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-usuario-cadastro',
@@ -9,7 +10,7 @@ import {UsuarioService} from "../usuario.service";
   styleUrls: ['./usuario-cadastro.component.css']
 })
 export class UsuarioCadastroComponent implements OnInit {
-  private usuario = {
+  usuario = {
     id: '',
     name: '',
     email: '',
@@ -20,6 +21,7 @@ export class UsuarioCadastroComponent implements OnInit {
     private usuarioServices: UsuarioService,
     private route: ActivatedRoute,
     private router: Router,
+    private toastr: ToastrService
   ) {
   }
 
@@ -36,10 +38,11 @@ export class UsuarioCadastroComponent implements OnInit {
     console.log(usuario.value)
     this.usuarioServices.setUsuario(usuario.value)
       .subscribe(resp => {
-          this.router.navigate(['/usuarios', resp.id])
+          // this.router.navigate(['/usuarios', resp.id]);
+          this.toastr.success('Criada com sucesso!', 'Usuário');
         },
         resp => {
-          console.error(resp)
+          this.toastr.error(resp.error.text, 'Usuário');
         })
   }
 
@@ -63,9 +66,10 @@ export class UsuarioCadastroComponent implements OnInit {
     this.usuarioServices.updateUsuario(this.usuario)
       .subscribe(resp => {
           this.usuario = Object.assign(this.usuario, resp)
+          this.toastr.success('Atualizado com sucesso!', 'Usuário');
         },
         resp => {
-          console.error(resp)
+          this.toastr.error(resp.error.text, 'Usuário');
         })
   }
 }

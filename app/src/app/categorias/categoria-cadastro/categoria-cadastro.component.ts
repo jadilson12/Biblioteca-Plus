@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {CategoriasService} from "../categorias.service";
 import {ActivatedRoute, Route, Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-categoria-cadastro',
@@ -19,7 +20,8 @@ export class CategoriaCadastroComponent implements OnInit {
   constructor(
     private categoriaServices: CategoriasService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {
   }
 
@@ -30,10 +32,11 @@ export class CategoriaCadastroComponent implements OnInit {
   private adicionar(categoria: NgForm) {
     this.categoriaServices.setCategoria(categoria.value)
       .subscribe(resp => {
-          this.router.navigate(['/categorias', resp.id])
+          // this.router.navigate(['/categorias', resp.id])
+          this.toastr.success('Criada com sucesso!', 'Categoria');
         },
         resp => {
-          console.error(resp)
+          this.toastr.error(resp.error.text, 'Categoria');
         })
   }
 
@@ -56,9 +59,10 @@ export class CategoriaCadastroComponent implements OnInit {
     this.categoriaServices.updateCategoria(this.categoria)
       .subscribe(resp => {
           this.categoria = Object.assign(this.categoria, resp)
+          this.toastr.success('Criada com sucesso!', 'Categoria');
         },
         resp => {
-          console.error(resp)
+          this.toastr.error(resp.error.text, 'Categoria');
         })
   }
 }

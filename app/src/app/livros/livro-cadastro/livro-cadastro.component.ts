@@ -3,6 +3,7 @@ import {NgForm} from '@angular/forms';
 import {ActivatedRoute, Router} from "@angular/router";
 import {LivroService} from "../livro.service";
 import {CategoriasService} from "../../categorias/categorias.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-livro-cadastro',
@@ -19,13 +20,14 @@ export class LivroCadastroComponent implements OnInit {
     dt_lancamento: '',
     categoria_id: ''
   };
-  private categorias = [];
+  private categorias = {};
 
   constructor(
     private livroServices: LivroService,
     private route: ActivatedRoute,
     private router: Router,
-    private categoriaService: CategoriasService
+    private categoriaService: CategoriasService,
+    private toastr: ToastrService
   ) {
   }
 
@@ -44,17 +46,17 @@ export class LivroCadastroComponent implements OnInit {
   private adicionar(livro: NgForm) {
     this.livroServices.setLivro(livro.value)
       .subscribe(resp => {
-          this.router.navigate(['/livros', resp.id])
+          // this.router.navigate(['/livros', resp.id])
+          this.toastr.success('Criada com sucesso!', 'Livro');
         },
         resp => {
-          console.error(resp)
+          this.toastr.error(resp.error.text, 'Livro');
         })
   }
 
   private carregarLivro(idLivro: number) {
     this.livroServices.showLivro(idLivro)
       .subscribe(livro => {
-        // this.livro = Object.assign(this.livro, livro);
         this.livro = Object.assign(this.livro, livro);
         console.log(this.livro)
       })
@@ -72,9 +74,11 @@ export class LivroCadastroComponent implements OnInit {
     this.livroServices.updateLivro(this.livro)
       .subscribe(resp => {
           this.livro = Object.assign(this.livro, resp)
+          this.toastr.success('Atualizado com sucesso!', 'Livro');
         },
         resp => {
-          console.error(resp)
+          this.toastr.error(resp.error.text, 'Livro');
         })
+
   }
 }

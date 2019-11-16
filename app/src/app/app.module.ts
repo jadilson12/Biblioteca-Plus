@@ -13,6 +13,7 @@ import {LivrosModule} from './livros/livros.module';
 import {UsuariosModule} from './usuarios/usuarios.module';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {InterceptorService} from "./interceptors/interceptor.service";
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,12 @@ import {InterceptorService} from "./interceptors/interceptor.service";
     CategoriasModule,
     LivrosModule,
     UsuariosModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-bottom-center',
+      preventDuplicates: true,
+    })
   ],
   providers: [
     {

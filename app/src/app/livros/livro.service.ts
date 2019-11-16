@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
 
 @Injectable({providedIn: 'root'})
 export class LivroService {
@@ -10,11 +9,11 @@ export class LivroService {
 
   baseUrl: string = 'http://localhost:8000/api/v1/livros';
 
-  getLivro(): Observable<any> {
+  getLivro() {
     return this.http.get(this.baseUrl)
   }
 
-  setLivro(livro: any): Observable<any> {
+  setLivro(livro) {
     return this.http.post(this.baseUrl, livro)
   }
 

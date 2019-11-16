@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable} from "rxjs/Observable";
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +11,11 @@ export class UsuarioService {
 
   baseUrl: string = 'http://localhost:8000/api/v1/users';
 
-  getUsuario(): Observable<any> {
+  getUsuario() {
     return this.http.get(this.baseUrl)
   }
 
-  setUsuario(usuario: any): Observable<any> {
+  setUsuario(usuario: any) {
     return this.http.post(this.baseUrl, usuario)
   }
 
