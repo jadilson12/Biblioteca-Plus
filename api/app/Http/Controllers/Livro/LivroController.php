@@ -26,7 +26,7 @@ class LivroController extends Controller
             return response($livro, 201);
 
         } catch (\Exception $exception) {
-            return response('Not Found', 404);
+            return response('Failed in store');
         }
     }
 
@@ -47,7 +47,7 @@ class LivroController extends Controller
             return response($livro, 200);
 
         } catch (\Exception $exception) {
-            return response('Not Found', 404);
+            return response('Failed in update');
         }
     }
 

@@ -25,7 +25,7 @@ class CategoriaController extends Controller
             return response($categoria, 201);
 
         } catch (\Exception $exception) {
-            return response('Not Found', 404);
+            return response('Failed in store');
         }
     }
 
@@ -46,7 +46,7 @@ class CategoriaController extends Controller
             return response($categoria, 200);
 
         } catch (\Exception $exception) {
-            return response('Not Found', 404);
+            return response('Failed in update');
         }
     }
 
