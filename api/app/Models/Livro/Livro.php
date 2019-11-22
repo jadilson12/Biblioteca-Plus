@@ -52,7 +52,7 @@ class Livro extends Model
         return DB::table('livros as li')
             ->join('categorias as cat', 'li.categoria_id', '=', 'cat.id')
             ->select('li.*', 'cat.nm_categoria')
-            ->get();
+            ->paginate(5);
     }
 
 }
