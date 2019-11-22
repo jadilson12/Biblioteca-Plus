@@ -9,7 +9,7 @@ import { faBars, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 export class NavbarComponent implements OnInit {
   faBars = faBars;
   faArrowLeft = faArrowLeft;
-
+  isMenu: boolean;
   constructor() { }
 
   ngOnInit() {

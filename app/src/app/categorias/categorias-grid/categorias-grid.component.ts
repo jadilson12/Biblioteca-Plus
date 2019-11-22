@@ -13,7 +13,8 @@ import {Observable} from 'rxjs';
 export class CategoriasGridComponent implements OnInit {
   faTrash = faTrash;
   faEdit = faEdit;
-  categorias: Observable<any[]>;
+  categorias: [];
+
 
   constructor(
     private categoriaServices: CategoriasService,
