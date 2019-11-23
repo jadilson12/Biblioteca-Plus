@@ -32,8 +32,8 @@
           <td>{{livro.nm_livro}}</td>
           <td>{{livro.nm_autor}}</td>
           <td>{{livro.nm_editora}}</td>
-          <td>{{livro.dd_lancamento}}</td>
           <td>{{livro.num_paginas}}</td>
+          <td>{{livro.dt_lancamento}}</td>
           <td>{{livro.nm_categoria}}</td>
           <td>
             <button type="button" class="btn btn-sm btn-danger mr-2" (click)="deleteLivro(livro.id)">
@@ -44,9 +44,31 @@
             </button>
           </td>
         </tr>
-
         </tbody>
       </table>
+      <div class="justify-content-center">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
+            <li class="page-item" [ngClass]="{disabled:current_page === 1}">
+              <button class="page-link" (click)="setPage(1)">Primeiro</button>
+            </li>
+            <li class="page-item" [ngClass]="{disabled:current_page === 1}">
+              <button class="page-link" (click)="setPage(current_page - 1)">Anterior</button>
+            </li>
+            <li class="page-item " [ngClass]="{active:current_page === page + 1 }" *ngFor="let page of total">
+              <button class="page-link active" (click)="setPage(page + 1)">{{1 + page}}</button>
+            </li>
+
+            <li class="page-item" [ngClass]="{disabled:current_page === last_page}">
+              <button class="page-link" (click)="setPage(current_page + 1)">Próximo</button>
+            </li>
+            <li class="page-item" [ngClass]="{disabled:current_page === last_page}">
+              <button class="page-link" (click)="setPage(last_page)">Último</button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
     </div>
     <div class="card-footer text-muted">
       <div class="d-flex justify-content-end">

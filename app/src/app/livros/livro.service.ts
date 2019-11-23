@@ -10,8 +10,8 @@ export class LivroService {
 
   baseUrl = 'http://localhost:8000/api/v1/livros';
 
-  getLivro(): Observable<any>  {
-    return this.http.get(this.baseUrl);
+  getLivro(numeroPage): Observable<any>  {
+    return this.http.get(`${this.baseUrl}?page=${numeroPage}`);
   }
 
   setLivro(livro): Observable<any>  {
