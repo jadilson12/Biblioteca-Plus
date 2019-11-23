@@ -1,5 +1,5 @@
 .navbar {
-  padding: 10px 0;
+  padding: 4px 0;
   background-color: #1e94d2;
 }
 
@@ -47,4 +47,21 @@
 
 .navbar-menuitem.ativo {
   background-color: #494541;
+}
+.usename {
+  text-align: center;
+  padding: 12px;
+}
+
+.navbar-toggle {
+  display: none;
+}
+
+ @media  screen and (max-width: 992px){
+   .navbar-toggle {
+     display: block;
+   }
+   .nav-link {
+     display: none;
+   }
 }

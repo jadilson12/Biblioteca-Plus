@@ -1,25 +1,33 @@
-<nav class="navbar">
+<nav class="navbar bg-primary">
   <div class="container">
-    <div class="row">
-      <div class="col-12">
+      <div class="col-12 justify-content-between d-flex">
         <div class="d-flex">
-          <span>
+          <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <a href="javascript:;" class="navbar-toggle" (click)="isMenu =!isMenu">
               <fa-icon [icon]="faBars"></fa-icon>
             </a>
-          </span>
+            <a class="navbar-brand ml-3" routerLink="/">Biblioteca <strong>plus</strong></a>
+            <div class="navbar-nav">
+              <a class="nav-item nav-link" routerLink="">Home</a>
+              <a class="nav-item nav-link" routerLinkActive="active" routerLink="/livros">Livros</a>
+              <a class="nav-item nav-link" routerLinkActive="active" routerLink="/categorias">Categorias</a>
+              <a class="nav-item nav-link" routerLinkActive="active" routerLink="/usuarios">Usuários</a>
+              <a class="nav-item nav-link" routerLinkActive="active" routerLink="/logout">Logout</a>
+            </div>
+          </nav>
+        </div>
+        <div class="usename text-center text-white font-weight-bolder">
+          <strong>Jadilson</strong>
         </div>
       </div>
-    </div>
   </div>
-  <ul class="navbar-menu" [hidden]="!isMenu">
+  <ul class="navbar-menu" [hidden]="isMenu">
     <li class="d-flex navbar-usuario justify-content-between">
       <strong>Pedro Dias</strong>
       <a href="javascript:;" class="navbar-toggle" (click)="isMenu =!isMenu">
         <fa-icon [icon]="faArrowLeft"></fa-icon>
       </a>
     </li>
-
     <li class="navbar-menuitem"><a routerLink="/">Home</a></li>
     <li class="navbar-menuitem" routerLinkActive="ativo"><a routerLink="/livros">Livros</a></li>
     <li class="navbar-menuitem" routerLinkActive="ativo"><a routerLink="/categorias">Categorias</a></li>
