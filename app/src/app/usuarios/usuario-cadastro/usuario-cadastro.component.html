@@ -14,9 +14,22 @@
             class="form-control"
             id="nome"
             name="name"
+            required
+            minlength="5"
             [(ngModel)]="usuario.name"
             #nome="ngModel"
             placeholder="Digite o nome do usuario">
+          <app-message-error
+            [control]="nome"
+            error="required"
+            message="Campo é obrigatório"
+          ></app-message-error>
+          <app-message-error
+            [control]="nome"
+            error="minlength"
+            message="Minimo de {{ nome.errors?.minlength?.requiredLength }}
+          caracteres."
+          ></app-message-error>
         </div>
       </div>
       <div class="col-6">
@@ -27,8 +40,15 @@
                  id="email"
                  name="email"
                  [(ngModel)]="usuario.email"
+                 required
                  #email="ngModel"
+                 email
                  placeholder="Digite o e-mail">
+          <app-message-error
+            [control]="email"
+            error="required"
+            message="Campo é obrigatório"
+          ></app-message-error>
         </div>
       </div>
       <div class="col-6">
@@ -40,7 +60,13 @@
                  name="password"
                  [(ngModel)]="usuario.password"
                  #password="ngModel"
+                 pattern="[a-z]*"
                  placeholder="Digite o password">
+          <app-message-error
+            [control]="password"
+            error="pattern"
+            message="Permitido apenas letras minúsculas"
+          ></app-message-error>
         </div>
       </div>
     </div>

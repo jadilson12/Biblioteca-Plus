@@ -11,11 +11,17 @@
           <label for="nome">Nome do livro</label>
           <input type="text"
                  class="form-control"
-                 #nm_livro="ngModel"
+                 #nmLivro="ngModel"
                  name="nm_livro"
                  id="nome"
+                 required
                  placeholder="Digite o nome do livro"
                  [(ngModel)]="livro.nm_livro">
+          <app-message-error
+            [control]="nmLivro"
+            error="required"
+            message="Campo é obrigatório"
+          ></app-message-error>
         </div>
       </div>
       <div class="col-6">
@@ -24,10 +30,16 @@
           <input type="text"
                  class="form-control"
                  id="autor"
+                 required
                  name="nm_autor"
                  #nm_autor="ngModel"
-                 placeholder="Digite o nome do autor do livro"
+                 placeholder="Digite do livro"
                  [(ngModel)]="livro.nm_autor">
+          <app-message-error
+            [control]="nm_autor"
+            error="required"
+            message="Campo é obrigatório"
+          ></app-message-error>
         </div>
       </div>
     </div>
@@ -38,10 +50,16 @@
           <input type="text"
                  class="form-control"
                  id="nomeEditora"
+                 required
                  name="nm_editora"
                  #nm_editora="ngModel"
                  placeholder="Digite o nome da editora"
                  [(ngModel)]="livro.nm_editora">
+          <app-message-error
+            [control]="nm_editora"
+            error="required"
+            message="Campo é obrigatório"
+          ></app-message-error>
         </div>
       </div>
       <div class="col-3">
@@ -50,10 +68,16 @@
           <input type="number"
                  class="form-control"
                  id="paginas"
+                 required
                  name="num_paginas"
                  #num_paginas="ngModel"
                  placeholder="200"
                  [(ngModel)]="livro.num_paginas">
+          <app-message-error
+            [control]="num_paginas"
+            error="required"
+            message="Campo é obrigatório"
+          ></app-message-error>
         </div>
       </div>
       <div class="col-3">
@@ -61,7 +85,6 @@
           <label for="lancamento">Ano de lançamento</label>
           <input type="date"
                  class="form-control"
-                 required
                  #dd_lancamento="ngModel"
                  [(ngModel)]="livro.dt_lancamento"
                  name="dd_lancamento"
@@ -77,8 +100,7 @@
               id="selec"
               name="categoria_id"
               #categoria_id="ngModel" ngModel>
-        <option
-          value="{{ livro.id != ''? livro.id : '' }}" selected>
+        <option value="{{ livro.id != ''? livro.id : '' }}" selected>
           {{ livro.id != true ? livro.categoria_id : 'Seleciona' }}
         </option>
         <option *ngFor="let categoria of categorias" value="{{ livro.nm_categoria }}">

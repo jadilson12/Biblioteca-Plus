@@ -5,6 +5,7 @@ import {UsuariosGridComponent} from './usuarios-grid/usuarios-grid.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
+import {SharedModule} from "../shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import {FormsModule} from '@angular/forms';
     CommonModule,
     FontAwesomeModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
   exports: [
     UsuariosGridComponent,

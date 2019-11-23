@@ -4,7 +4,7 @@
       <h1>{{ editando ? 'Atualizar' : 'Cadastrar' }} Categoria</h1>
     </div>
   </div>
-  <form #categoriaForm="ngForm" (ngSubmit)="salvar(categoriaForm)">
+  <form autocomplete="off" #categoriaForm="ngForm" (ngSubmit)="salvar(categoriaForm)">
     <div class="row">
       <div class="col-12">
         <div class="form-group">
@@ -13,10 +13,21 @@
                  id="nome" name="nm_categoria"
                  [(ngModel)]="categoria.nm_categoria"
                  placeholder="Digite o nome da categoria"
-                 required #nmCategoria="ngModel">
+                 required #nmCategoria="ngModel"
+                 minlength="10">
+          <app-message-error
+            [control]="nmCategoria"
+            error="required"
+            message="Campo obrigatório"
+          ></app-message-error>
+          <app-message-error
+            [control]="nmCategoria"
+            error="minlength"
+            message="Minimo de {{ nmCategoria.errors?.minlength?.requiredLength }}
+          caracteres."
+          ></app-message-error>
         </div>
       </div>
-
     </div>
     <div class="d-flex justify-content-end">
       <div>
