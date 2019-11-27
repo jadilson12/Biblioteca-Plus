@@ -17,13 +17,9 @@ export class LogoutComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.logout()
-  }
-
-  logout(): void {
-    window.sessionStorage.removeItem("token");
-    window.sessionStorage.removeItem("userName");
+    window.sessionStorage.clear()
     this.toastr.success('Usuário desconectado');
     this.router.navigate(['/login']);
   }
+
 }

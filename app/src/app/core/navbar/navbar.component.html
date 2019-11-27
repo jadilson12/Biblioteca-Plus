@@ -24,7 +24,7 @@
   </div>
   <ul class="navbar-menu" [hidden]="isMenu" *ngIf="authOn()">
     <li class="d-flex navbar-usuario justify-content-between">
-      <strong>Pedro Dias</strong>
+      <strong>{{ username }}</strong>
       <a href="javascript:;" class="navbar-toggle" (click)="isMenu =!isMenu">
         <fa-icon [icon]="faArrowLeft"></fa-icon>
       </a>

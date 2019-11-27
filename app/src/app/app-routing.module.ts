@@ -8,9 +8,9 @@ import {UsuariosGridComponent} from './usuarios/usuarios-grid/usuarios-grid.comp
 import {UsuarioCadastroComponent} from './usuarios/usuario-cadastro/usuario-cadastro.component';
 import {HomeComponent} from './core/home/home.component';
 import {LoginComponent} from './core/login/login.component';
+import {LogoutComponent} from "./core/logout/logout.component";
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
   {path: '', component: HomeComponent},
   {path: 'categorias', component: CategoriasGridComponent,},
   {path: 'categorias/novo', component: CategoriaCadastroComponent},
@@ -21,7 +21,8 @@ const routes: Routes = [
   {path: 'usuarios', component: UsuariosGridComponent},
   {path: 'usuarios/novo', component: UsuarioCadastroComponent},
   {path: 'usuarios/:id', component: UsuarioCadastroComponent},
-  {path: 'logout', component: LoginComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'logout', component: LogoutComponent},
 ];
 
 @NgModule({
