@@ -14,6 +14,7 @@ import {UsuariosModule} from './usuarios/usuarios.module';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {InterceptorService} from "./interceptors/interceptor.service";
 import {ToastrModule} from "ngx-toastr";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import {ToastrModule} from "ngx-toastr";
     LivrosModule,
     UsuariosModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 10000,
       positionClass: 'toast-bottom-center',
@@ -41,7 +43,7 @@ import {ToastrModule} from "ngx-toastr";
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,
       multi: true
-    }
+    },
   ],
   bootstrap: [AppComponent]
 })

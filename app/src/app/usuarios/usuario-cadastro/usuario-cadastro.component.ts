@@ -35,10 +35,9 @@ export class UsuarioCadastroComponent implements OnInit {
   }
 
   private adicionar(usuario: NgForm) {
-    console.log(usuario.value);
     this.usuarioServices.setUsuario(usuario.value)
       .subscribe(resp => {
-          this.router.navigate(['/usuarios', resp.id]);
+          this.router.navigate(['/usuarios', resp.user.id]);
           this.toastr.success('Criada com sucesso!', 'Usuário');
         },
         resp => {
@@ -50,7 +49,6 @@ export class UsuarioCadastroComponent implements OnInit {
     this.usuarioServices.showUsuario(idUsuario)
       .subscribe(usuario => {
         this.usuario = Object.assign(this.usuario, usuario);
-        console.log(this.usuario);
       });
   }
 

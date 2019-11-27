@@ -1,27 +1,27 @@
 <nav class="navbar bg-primary">
   <div class="container">
-      <div class="col-12 justify-content-between d-flex">
-        <div class="d-flex">
-          <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a href="javascript:;" class="navbar-toggle" (click)="isMenu =!isMenu">
-              <fa-icon [icon]="faBars"></fa-icon>
-            </a>
-            <a class="navbar-brand ml-3" routerLink="/">Biblioteca <strong>plus</strong></a>
-            <div class="navbar-nav">
-              <a class="nav-item nav-link" routerLink="">Home</a>
-              <a class="nav-item nav-link" routerLinkActive="active" routerLink="/livros">Livros</a>
-              <a class="nav-item nav-link" routerLinkActive="active" routerLink="/categorias">Categorias</a>
-              <a class="nav-item nav-link" routerLinkActive="active" routerLink="/usuarios">Usuários</a>
-              <a class="nav-item nav-link" routerLinkActive="active" routerLink="/logout">Logout</a>
-            </div>
-          </nav>
-        </div>
-        <div class="usename text-center text-white font-weight-bolder">
-          <strong>Jadilson</strong>
-        </div>
+    <div class="col-12 justify-content-between d-flex">
+      <div class="d-flex">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+          <a href="javascript:;" class="navbar-toggle" (click)="isMenu =!isMenu" *ngIf="authOn()">
+            <fa-icon [icon]="faBars"></fa-icon>
+          </a>
+          <a class="navbar-brand ml-3" routerLink="/">Biblioteca <strong>plus</strong></a>
+          <div class="navbar-nav" *ngIf="authOn()">
+            <a class="nav-item nav-link" routerLink="">Home</a>
+            <a class="nav-item nav-link" routerLinkActive="active" routerLink="/livros">Livros</a>
+            <a class="nav-item nav-link" routerLinkActive="active" routerLink="/categorias">Categorias</a>
+            <a class="nav-item nav-link" routerLinkActive="active" routerLink="/usuarios">Usuários</a>
+            <a class="nav-item nav-link" routerLinkActive="active" routerLink="/logout">Logout</a>
+          </div>
+        </nav>
       </div>
+      <div class="usename text-center text-white font-weight-bolder" *ngIf="authOn()">
+        <strong>{{ username }}</strong>
+      </div>
+    </div>
   </div>
-  <ul class="navbar-menu" [hidden]="isMenu">
+  <ul class="navbar-menu" [hidden]="isMenu" *ngIf="authOn()">
     <li class="d-flex navbar-usuario justify-content-between">
       <strong>Pedro Dias</strong>
       <a href="javascript:;" class="navbar-toggle" (click)="isMenu =!isMenu">

@@ -11,12 +11,14 @@ export class UsuarioService {
 
   baseUrl: string = 'http://localhost:8000/api/v1/users';
 
+  baseUrlRegister: string = 'http://localhost:8000/api/v1/register';
+
   getUsuario(): Observable<any>  {
     return this.http.get(this.baseUrl);
   }
 
   setUsuario(usuario: any): Observable<any>  {
-    return this.http.post(this.baseUrl, usuario);
+    return this.http.post(this.baseUrlRegister, usuario);
   }
 
   deleteUsuario(id) {

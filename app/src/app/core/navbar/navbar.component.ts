@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { faBars, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import {Component, OnInit} from '@angular/core';
+import {faBars, faArrowLeft} from '@fortawesome/free-solid-svg-icons';
+import { CanActivate } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -7,13 +8,29 @@ import { faBars, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  faBars = faBars;
-  faArrowLeft = faArrowLeft;
-  isMenu: boolean;
-  constructor() { }
+  private faBars = faBars;
+  private faArrowLeft = faArrowLeft;
+  private isMenu: boolean;
+  private username: string;
+
+  constructor() {
+
+  }
 
   ngOnInit() {
     this.isMenu = true;
+
+    setInterval(() => {
+      this.username = window.sessionStorage.getItem('userName');
+      this.authOn();
+    }, 1000)
   }
+
+  private authOn() {
+    let logado = true;
+    if (!this.username) logado = false;
+    return logado
+  }
+
 
 }

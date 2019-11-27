@@ -2,14 +2,22 @@
   <h1 class="text-center">Logar no sistema</h1>
 </div>
 <div class="row d-flex justify-content-center">
-  <form>
+  <form #userForm="ngForm" (ngSubmit)="login(userForm)">
     <div class="form-group">
       <label for="email">E-mail</label>
-      <input type="email" class="form-control" id="email" placeholder="Enter com seu e-mail">
+      <input type="email" class="form-control" id="email"
+             name="email"
+             [(ngModel)]="user.email"
+             #email="ngModel"
+             placeholder="Enter com seu e-mail">
     </div>
     <div class="form-group">
       <label for="senha">Senha</label>
-      <input type="password" class="form-control" id="senha" placeholder="Password">
+      <input type="password" class="form-control" id="senha"
+             name="password"
+             [(ngModel)]="user.password"
+             #password="ngModel"
+             placeholder="Password">
     </div>
     <div class="d-flex justify-content-between">
       <button type="submit" class="btn btn-primary mr-4">Logar</button>

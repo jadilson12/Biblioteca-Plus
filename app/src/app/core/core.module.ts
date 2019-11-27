@@ -7,6 +7,7 @@ import {NavbarComponent} from './navbar/navbar.component';
 import {FormsModule} from '@angular/forms';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {RouterModule} from '@angular/router';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import {RouterModule} from '@angular/router';
     FooterComponent,
     LoginComponent,
     NavbarComponent,
+    LogoutComponent,
   ],
   imports: [
     CommonModule,
@@ -26,6 +28,6 @@ import {RouterModule} from '@angular/router';
     FooterComponent,
     LoginComponent,
     NavbarComponent,
-  ]
+  ],
 })
 export class CoreModule { }
