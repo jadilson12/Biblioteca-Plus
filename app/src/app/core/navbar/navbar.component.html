@@ -12,7 +12,8 @@
             <a class="nav-item nav-link" routerLinkActive="active" routerLink="/livros">Livros</a>
             <a class="nav-item nav-link" routerLinkActive="active" routerLink="/categorias">Categorias</a>
             <a class="nav-item nav-link" routerLinkActive="active" routerLink="/usuarios">Usuários</a>
-            <a class="nav-item nav-link" routerLinkActive="active" routerLink="/logout">Logout</a>
+            <a class="nav-item nav-link" routerLinkActive="active" routerLink="/logout" *ngIf="authOn()">Logout</a>
+            <a class="nav-item nav-link" routerLinkActive="active" routerLink="/logout" *ngIf="!authOn()">Login</a>
           </div>
         </nav>
       </div>

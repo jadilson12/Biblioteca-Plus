@@ -103,8 +103,8 @@
         <option value="{{ livro.id != ''? livro.id : '' }}" selected>
           {{ livro.id != true ? livro.categoria_id : 'Seleciona' }}
         </option>
-        <option *ngFor="let categoria of categorias" value="{{ livro.nm_categoria }}">
-          {{categoria.nm_categoria}}</option>
+        <option *ngFor="let categoria of categorias" value="{{ categoria.id }}">
+          {{categoria.nm_categoria }}</option>
       </select>
     </div>
 

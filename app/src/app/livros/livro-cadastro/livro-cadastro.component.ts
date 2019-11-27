@@ -44,6 +44,7 @@ export class LivroCadastroComponent implements OnInit {
   }
 
   private adicionar(livro: NgForm) {
+    console.log(livro)
     this.livroServices.setLivro(livro.value)
       .subscribe(resp => {
           this.router.navigate(['/livros', resp.id]);
